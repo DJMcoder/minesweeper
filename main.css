@@ -1,0 +1,24 @@
+td {
+  width: 30px;
+  height: 30px;
+  background-color: gray;
+  text-align: center;
+  font-weight: bold;
+  font-family: monospace;
+}
+
+td.revealed {
+  background-color: lightgray;
+}
+
+td.flagged:not(.revealed) {
+  background: red;
+}
+
+.center {
+  text-align: center;
+}
+
+#time {
+  font-weight: bold;
+}
