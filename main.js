@@ -115,7 +115,7 @@ $('td:not(.revealed)').contextmenu(function(e) {
 $('td[bomb="true"]').click(function() {
 
   if ($(this).hasClass('flagged')) return
-  if (game_lost) return
+  if (game_over) return
   $('#time').parent().html('[GAME LOST] Time: <span id="time"></span> seconds')
   update_time_func()
   alert('Game over! You can keep playing, but you will not actually win the game.')
