@@ -80,7 +80,7 @@ function checkIfWon() {
   if ($('td.revealed').length < rows*cols-num_bombs) return false
   if (game_over) {
     alert('You won the game ... but you lost earlier')
-    $('#time')text('[GAME LOST] "Winning" time: <span id="time">' + won_time/1000 +'</span> seconds')
+    $('#time').text('[GAME LOST] "Winning" time: <span id="time">' + won_time/1000 +'</span> seconds')
     return false
   }
   won_time = getTime()
