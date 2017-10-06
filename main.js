@@ -1,8 +1,8 @@
-var rows = 20       // number of rows     in the field
-var cols = 50      // number of coloumns in the field
-var num_bombs = 100   // number of bombs    in the field
-var field = []      // the field
-var bombs = []      // the positions of the bombs
+var rows = Math.floor(window.innerHeight/32) - 3        // number of rows     in the field
+var cols = Math.ceil(window.innerWidth/32)  // number of coloumns in the field
+var num_bombs = rows*cols/10   // number of bombs    in the field
+var field = []        // the field
+var bombs = []        // the positions of the bombs
 
 var game_over = false
 
@@ -78,13 +78,13 @@ function numBombsAround(x,y) {
 
 function checkIfWon() {
   if ($('td.revealed').length < rows*cols-num_bombs) return false
-  if (game_over) {
-    alert('You won the game ... but you lost earlier')
-    $('#time').text('[GAME LOST] "Winning" time: <span id="time">' + won_time/1000 +'</span> seconds')
-    return false
-  }
   won_time = getTime()
   clearInterval(update_time)
+  if (game_over) {
+    alert('You won the game ... but you lost earlier')
+    $('#time').parent().html('[GAME LOST] "Winning" time: <span id="time">' + won_time/1000 +'</span> seconds')
+    return false
+  }
   alert('You won! Time = ' + won_time/1000 + ' seconds')
   $('#time').parent().html('Winning time: <span id="time">' + won_time/1000 +'</span> seconds')
   return true
@@ -113,10 +113,10 @@ $('td:not(.revealed)').contextmenu(function(e) {
 })
 
 $('td[bomb="true"]').click(function() {
-
   if ($(this).hasClass('flagged')) return
   if (game_over) return
   $('#time').parent().html('[GAME LOST] Time: <span id="time"></span> seconds')
   update_time_func()
+  game_over = true
   alert('Game over! You can keep playing, but you will not actually win the game.')
 })
