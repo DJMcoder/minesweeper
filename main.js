@@ -1,6 +1,6 @@
 var rows = Math.floor(window.innerHeight/32) - 3        // number of rows     in the field
 var cols = Math.ceil(window.innerWidth/32)  // number of coloumns in the field
-var num_bombs = rows*cols/10   // number of bombs    in the field
+var num_bombs = Math.round(rows*cols/10)   // number of bombs    in the field
 var field = []        // the field
 var bombs = []        // the positions of the bombs
 
